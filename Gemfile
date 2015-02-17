@@ -1,11 +1,3 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem "bit-struct"
-gem "pcaprub"
-
-
-group :test do
-  gem "minitest"
-end
-
-
+gemspec
