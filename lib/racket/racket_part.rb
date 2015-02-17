@@ -1,6 +1,5 @@
-# $Id: racketpart.rb 14 2008-03-02 05:42:30Z warchild $
-#
-# Copyright (c) 2008, Jon Hart 
+# Copyright (c) 2008, Jon Hart
+# Copyright (C) 2015 Aaron Ten Clay
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -24,43 +23,42 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
+
 require 'rubygems'
 require 'bit-struct'
 
 module Racket
 # Every Racket object is made up of numerous sub-parts, namely layers of the OSI stack.
-class RacketPart < BitStruct
+	class RacketPart < BitStruct
 
-  # Boolean indicating whether or not this instance should be
-  # automatically "fixed" prior to be packed and sent.
-  attr_accessor :autofix
+		# Boolean indicating whether or not this instance should be
+		# automatically "fixed" prior to be packed and sent.
+		attr_accessor :autofix
 
-  # Should this instance be automatically fixed 
-  # prior to being packed and sent?
-  def autofix?
-    @autofix
-  end
+		# Should this instance be automatically fixed
+		# prior to being packed and sent?
+		def autofix?
+			@autofix
+		end
 
-  def initialize(*args)
-    @autofix = true
-    super(*args)
-  end
+		def initialize(*args)
+			@autofix = true
+			super(*args)
+		end
 
 
-  # Print out all of the fields and all of their values
-  def pretty
-    s  = ""
-    self.fields.each do |f|
-      unless (f.name == "payload")
-        s += "#{f.name}=#{self.send(f.name)} "
-      end
-    end
-    s.gsub(/ $/, '')
-  end
- 
-  def fix!
-  end
+		# Print out all of the fields and all of their values
+		def pretty
+			s = ""
+			self.fields.each do |f|
+				unless (f.name == "payload")
+					s += "#{f.name}=#{self.send(f.name)} "
+				end
+			end
+			s.gsub(/ $/, '')
+		end
+
+		def fix!
+		end
+	end
 end
-end
-# vim: set ts=2 et sw=2:

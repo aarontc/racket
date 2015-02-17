@@ -27,12 +27,12 @@
 #
 
 require 'socket'
-require 'racket/racketpart'
-require 'racket/misc'
-require 'racket/l2'
-require 'racket/l3'
-require 'racket/l4'
-require 'racket/l5'
+require_relative 'racket_part'
+require_relative 'misc'
+require_relative 'l2'
+require_relative 'l3'
+require_relative 'l4'
+require_relative 'l5'
 
 module Racket
 class Racket
