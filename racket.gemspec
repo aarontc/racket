@@ -12,5 +12,6 @@ SPEC = Gem::Specification.new do |s|
 	s.add_dependency 'bit-struct'
 	s.add_dependency 'pcaprub'
 	s.add_development_dependency 'minitest'
+	s.add_development_dependency 'mocha'
 	s.add_development_dependency 'rake'
 end
