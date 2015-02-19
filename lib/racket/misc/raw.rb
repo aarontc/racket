@@ -1,6 +1,5 @@
-# $Id:$
-#
-# Copyright (c) 2008, Jon Hart 
+# Copyright (c) 2008, Jon Hart
+# Copyright (C) 2015 Aaron Ten Clay
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -25,11 +24,11 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-module Racket
-# A raw part of a packet that only has a payload
-class Raw < RacketPart
-  rest :payload
-end
-end
-# vim: set ts=2 et sw=2:
+require_relative '../racket_part'
 
+module Racket
+	# A raw part of a packet that only has a payload
+	class Raw < RacketPart
+		rest :payload
+	end
+end

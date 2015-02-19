@@ -1,6 +1,5 @@
-# $Id: orderedhash.rb 14 2008-03-02 05:42:30Z warchild $
-#
-# Copyright (c) 2008, Jon Hart 
+# Copyright (c) 2008, Jon Hart
+# Copyright (C) 2015 Aaron Ten Clay
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -26,38 +25,37 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 module Racket
-module Misc
-# Simple ordered hash. 
-#
-# XXX: todo -- add a method for moving/shifting
-# members around
-class OrderedHash < Hash
-  def initialize
-    @keys = []
-  end
+	module Misc
+		# Simple ordered hash.
+		#
+		# TODO: -- add a method for moving/shifting
+		# members around
+		class OrderedHash < Hash
+			def initialize
+				@keys = []
+			end
 
-  def []=(key, val)
-    @keys << key unless (self[key])
-    super
-  end
+			def []=(key, val)
+				@keys << key unless @keys.include? key
+				super
+			end
 
-  def delete(key)
-    @keys.delete(key)
-    super
-  end
+			def delete(key)
+				@keys.delete key
+				super
+			end
 
-  def each
-    @keys.each { |k| yield k, self[k] }
-  end
+			def each
+				@keys.each { |k| yield k, self[k] }
+			end
 
-  def each_key
-    @keys.each { |k| yield k }
-  end
+			def each_key
+				@keys.each { |k| yield k }
+			end
 
-  def each_value
-    @keys.each { |k| yield self[k] }
-  end
+			def each_value
+				@keys.each { |k| yield self[k] }
+			end
+		end
+	end
 end
-end
-end
-# vim: set ts=2 et sw=2:

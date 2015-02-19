@@ -1,15 +1,10 @@
-# $Id$
+require_relative '../../test_helper'
 
-$:.unshift File.join(File.dirname(__FILE__), "../..", "lib")
+require_relative '../../../lib/racket/l2/vlan'
 
-require 'test/unit'
-require 'racket'
-
-class TestVLAN <  Test::Unit::TestCase
-  def test_init
-    assert_nothing_raised() { Racket::L2::VLAN.new }
-    assert_nothing_raised() { Racket::L2::VLAN.new(Racket::Misc.randstring(30)) }
-  end
-
+class TestVLAN < Minitest::Test
+	def test_init
+		Racket::L2::VLAN.new
+		Racket::L2::VLAN.new Racket::Misc.randstring(30)
+	end
 end
-# vim: set ts=2 et sw=2:
